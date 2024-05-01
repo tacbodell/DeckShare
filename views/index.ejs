@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="index.css">
+    <title>DeckShare</title>
+</head>
+<body>
+    <h1>Hello MTG Fans!</h1>
+
+    <form action="/deck" method="POST">
+        <input type="text" placeholder="deck author" name="name">
+        <input type="text" placeholder="card name 1" name="cardName1">
+        <button type="submit">Submit</button>
+    </form> 
+
+    <h2>Below is a list of all the cards in my awesome deck:</h2>
+    <ul>
+    <% for (let i = 0; i < decks.length; i++){ %>
+        <li>
+            <span><%= decks[i].name %>: </span>
+            <span><%= decks[i].cardName1 %></span>
+        </li>
+    <% } %>
+    </ul>
+</body>
+</html>
