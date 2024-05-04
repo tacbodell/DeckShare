@@ -10,8 +10,9 @@
     <h1>Hello MTG Fans!</h1>
 
     <form action="/deck" method="POST">
-        <input type="text" placeholder="deck author" name="name">
-        <input type="text" placeholder="card name 1" name="cardName1">
+        <input type="text" placeholder="deck author" name="deckAuthor">
+        <input type="text" placeholder="deck name" name="deckName">
+        <input type="text" placeholder="card string" name="cardString">
         <button type="submit">Submit</button>
     </form> 
 
@@ -24,5 +25,7 @@
         </li>
     <% } %>
     </ul>
+
+    <img src=<%= cardImage %>>
 </body>
 </html>
