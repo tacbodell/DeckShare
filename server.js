@@ -27,19 +27,20 @@ MongoClient.connect('mongodb+srv://coonsbrysona:4aOXjx8otO3xPeRt@deckshare.vxo46
         const decksCollection = db.collection('decks_collection');
 
         app.get('/', async (req,res) => {
-            const image = constructImagePath(crab);
+            const imagePath = constructImagePath(crab);
             decksCollection
                 .find()
                 .toArray()
                 .then(data => {
-                    res.render('index.ejs', { decks: data, cardImage: image });
+                    res.render('index.ejs', { cardImage: imagePath });
                 })
                 .catch(err => {console.log(err)});
         })
 
         app.post('/deck', (req,res) => {
-            if (req.body.deckAuthor === '' || req.body.cardString === '' || req.body.deckName === ''){
-                console.log('All fields must be filled.');
+            if (req.body.deckAuthor === '' || req.body.cardString === '' || req.body.deckName.length < 50){
+                console.log('All fields must be filled correctly.');
+                res.json('Error: All fields must be filled correctly.');
             } else {
                 const deck = parseCardStringToArrayOfObjects(req.body.cardString);
                 decksCollection
@@ -75,7 +76,6 @@ MongoClient.connect('mongodb+srv://coonsbrysona:4aOXjx8otO3xPeRt@deckshare.vxo46
 
     // takes a cardstring from archidekt, and returns an array of card objects, in the format used in decks databases
     function parseCardStringToArrayOfObjects(str){
-        console.log(`str passed to parse function: ${str}`)
         let cardString = str;
         let arr = []
         while(cardString){
@@ -88,8 +88,6 @@ MongoClient.connect('mongodb+srv://coonsbrysona:4aOXjx8otO3xPeRt@deckshare.vxo46
             cardString.shift();
             cardString = cardString.join(' ');
 
-            console.log(`cardString after parsing for amount: ${cardString}`);
-
             // parse for name
             const parStartIndex = cardString.indexOf('(');
             const cardName = cardString.slice(0, parStartIndex - 1);
@@ -98,8 +96,6 @@ MongoClient.connect('mongodb+srv://coonsbrysona:4aOXjx8otO3xPeRt@deckshare.vxo46
             cardString = cardString.split('(');
             cardString.shift();
             cardString = cardString.join('(');
-
-            console.log(`cardString after parsing for name: ${cardString}`);
 
             // parse for set code
             const parEndIndex = cardString.indexOf(')');
@@ -110,18 +106,13 @@ MongoClient.connect('mongodb+srv://coonsbrysona:4aOXjx8otO3xPeRt@deckshare.vxo46
             cardString.shift();
             cardString = cardString.join(' ');
 
-            console.log(`cardString after parsing for code: ${cardString}`);
-
             // push new card object to array
             arr.push({
                 'name': cardName,
                 'amount': cardAmount,
                 'setCode': setCode,
             })
-
-            console.log(`array after pushing new object: ${arr}`);
         }
-        console.log(`cardString after loop ended: ${cardString}`)
-        console.log(`final array: ${JSON.stringify(arr)}`);
+
         return arr;
     }
