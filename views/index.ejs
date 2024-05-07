@@ -3,21 +3,39 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="/css/reset.css">
+    <link rel="stylesheet" href="/css/index.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
     <title>DeckShare</title>
 </head>
 <body>
-    <h1>Hello MTG Fans!</h1>
+    <h1 class="center">Hello MTG Fans!</h1>
 
-    <form action="/deck" method="POST">
-        <input type="text" placeholder="deck author" name="deckAuthor">
-        <input type="text" placeholder="deck name" name="deckName">
-        <input type="text" placeholder="card string" name="cardString">
-        <button type="submit">Submit</button>
-    </form> 
+    <div class="center column">
+    <h2>Submit a new deck here! Contact Gambo on Discord for more info:</h2>
+        <form action="/deck" method="POST">
+            <input type="text" placeholder="deck author" name="deckAuthor">
+            <input type="text" placeholder="deck name" name="deckName">
+            <input type="text" placeholder="card string" name="cardString">
+            <button type="submit">Submit</button>
+        </form>
+    </div> 
 
-    <h2>Below is a list of all the cards in my awesome deck:</h2>
+    <h2 class="center">Below is a list of all decks submitted to this app:</h2>
 
-    <img src=<%= cardImage %>>
+    <ul class="image-area">
+
+        <% for (let i = 0; i < allDecks.length; i++) { %>
+        <a href="/viewdeck/<%= allDecks[i]._id.toString() %>">
+            <li class="center deck-list-entry">
+                <img class="deck-image" src=<%= allDecksImages[i] %>>
+                <span class="bold"><%= allDecks[i].deckName %></span>
+                <span><%= allDecks[i].deckAuthor %></span>
+            </li>
+        </a>
+        <% } %>
+
+    </ul>
+    
 </body>
 </html>

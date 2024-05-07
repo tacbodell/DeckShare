@@ -28,10 +28,12 @@ h2 {
     flex-flow: row wrap;
     align-items: center;
     justify-content: center;
-    gap: 6rem;
+    gap: 3rem;
 }
-.deck-image {
-    width: 10rem;
+.card-image {
+    width: 15rem;
+    margin-bottom: 1rem;
+    border-radius: 10px;
 }
 .deck-list-entry {
     flex-flow: column nowrap;

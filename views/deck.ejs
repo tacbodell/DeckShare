@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/reset.css">
+    <link rel="stylesheet" href="/css/deck.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <title>DeckShare</title>
+</head>
+<body>
+    <h1 class="center"><%= deck.deckName %></h1>
+
+    <h2 class="center">Below is a list of all cards in this deck:</h2>
+
+    <ul class="image-area">
+
+        <% for (let i = 0; i < deck.cards.length; i++) { %>
+            <li class="center deck-list-entry">
+                <img class="card-image animate__animated animate__fadeInLeft" src=<%= images[i] %>>
+                <span class="bold"><%= deck.cards[i].name %></span>
+                <span>x<%= deck.cards[i].amount %></span>
+            </li>
+        <% } %>
+
+    </ul>
+
+    <script src="/js/deck.js"></script>
+</body>
+</html>
