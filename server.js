@@ -32,6 +32,12 @@ MongoClient.connect('mongodb+srv://coonsbrysona:4aOXjx8otO3xPeRt@deckshare.vxo46
         db = client.db(collectionName);
         decksCollection = db.collection('decks_collection');
     })
+    .then(() => {
+        // start server
+        app.listen(PORT, (req,res) => {
+            console.log(`Server live on port ${PORT}`);
+        })
+    })
     .catch(err => (console.log(err)));
 
 // load homepage
@@ -95,10 +101,6 @@ app.post('/deck', (req,res) => {
             .catch(err => console.error(err));
     }
 });
-
-app.listen(PORT, (req,res) => {
-    console.log(`Server live on port ${PORT}`);
-})
 
     // accepts a cardstring from archidekt, and returns an array of card objects, in the format used in decks databases
 function parseCardStringToArrayOfObjects(str){
