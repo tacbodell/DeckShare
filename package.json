@@ -4,6 +4,7 @@
   "description": "An app to showcase and share Magic the Gathering decks with your friends.",
   "main": "server.js",
   "scripts": {
+    "start": "node server",
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "nodemon server.js"
   },
