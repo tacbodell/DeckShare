@@ -6,7 +6,8 @@
   "scripts": {
     "start": "node server",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "nodemon server.js"
+    "dev": "nodemon server.js",
+    "imageDatabaseUpdate": "node node_scripts/updateImageDb"
   },
   "author": "Bryson Coons",
   "license": "ISC",

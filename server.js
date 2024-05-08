@@ -1,7 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const MongoClient = require('mongodb').MongoClient;
-const allPrintings = require('./AllPrintings.json');
+const imagePaths = require('./imagePaths');
 const { ObjectId } = require('mongodb');
     //  const set = allPrintings.data['OTJ'];
     //  const crab = set.cards.find(x => x.name === 'Explosive Derailment');
@@ -48,10 +48,7 @@ app.get('/', async (req,res) => {
         .catch(err => {console.log(err)});
     // get top card image url for every deck
     allDecks.forEach((el) => {
-        const cardToGetName = el.cards[0].name;
-        const cardToGetSet = el.cards[0].setCode;
-        const cardFromAllPrintings = allPrintings.data[cardToGetSet.toUpperCase()].cards.find(x => x.name === cardToGetName);
-        const cardImageString = constructImagePath(cardFromAllPrintings);
+        const cardImageString = imagePaths[el.cards[0].name];
         allDecksImages.push(cardImageString);
     })
     // render html document
@@ -71,10 +68,7 @@ app.get('/viewdeck/:deckid', async (req,res) => {
         .catch(err => {console.log(err)});
     // get array of every card's image
     deckToView.cards.forEach((el) => {
-        const cardName = el.name;
-        const cardSet = el.setCode;
-        const cardFromAllPrintings = allPrintings.data[cardSet.toUpperCase()].cards.find(x => x.name === cardName);
-        const cardImageString = constructImagePath(cardFromAllPrintings);
+        const cardImageString = imagePaths[el.name];
         cardImages.push(cardImageString);
     })
     //render page with deck
@@ -105,18 +99,6 @@ app.post('/deck', (req,res) => {
 app.listen(PORT, (req,res) => {
     console.log(`Server live on port ${PORT}`);
 })
-
-// accepts a card object from AllPrintings. returns a string containing a url to fetch the image for that card
-function constructImagePath(c) {
-    const fileFace = 'front';
-    const fileType = 'large';
-    const fileFormat = 'jpg';
-    const fileName = c.identifiers.scryfallId;
-    const dir1 = fileName.charAt(0);
-    const dir2 = fileName.charAt(1);
-    const imagePath = `https://cards.scryfall.io/${fileType}/${fileFace}/${dir1}/${dir2}/${fileName}.${fileFormat}`;
-    return imagePath;
-}
 
     // accepts a cardstring from archidekt, and returns an array of card objects, in the format used in decks databases
 function parseCardStringToArrayOfObjects(str){
