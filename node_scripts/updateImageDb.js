@@ -1,4 +1,4 @@
-// this file accepts and AllPrintings.json from mtgjson.com and outputs a json file with only the image paths
+// this file accepts an AllPrintings.json file from mtgjson.com and outputs a json file with only card name / image path key value pairs
 
 
 const json = require("./AllPrintings.json");
@@ -21,7 +21,7 @@ for (const set in json.data) {
   );
 }
 
-console.log("Done");
+console.log("Image path update done");
 
 // accepts a card object from AllPrintings. returns a string containing a url to fetch the image for that card
 function constructImagePath(c) {
