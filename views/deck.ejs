@@ -9,21 +9,40 @@
     <title>DeckShare</title>
 </head>
 <body>
-    <h1 class="center"><%= deck.deckName %></h1>
+    <nav class="nav-container">
+        <h1 class="center nav-item-big"><a href="/">MTG DeckShare</a></h1>
 
-    <h2 class="center">Below is a list of all cards in this deck:</h2>
+        <li class="nav-item">
+            <a href="/newdeck">New Deck</a>
+        </li>
+        <li class="nav-item">
+            <a href="/faq">FAQ</a>
+        </li>
+        <li class="nav-item">
+            <a href="https://brysoncoons.com/">Other Works</a>
+        </li>
+    </nav>
 
-    <ul class="image-area">
 
-        <% for (let i = 0; i < deck.cards.length; i++) { %>
-            <li class="center deck-list-entry">
-                <img class="card-image animate__animated animate__fadeInLeft" src=<%= images[i] %>>
-                <span class="bold"><%= deck.cards[i].name %></span>
-                <span>x<%= deck.cards[i].amount %></span>
-            </li>
-        <% } %>
+    <div class="center column">
+        <div class="user-area">
+            <h1 class="center"><%= deck.deckName %></h1>
 
-    </ul>
+            <h2 class="center">ALL CARDS:</h2>
+
+            <ul class="image-area">
+
+                <% for (let i = 0; i < deck.cards.length; i++) { %>
+                    <li class="center deck-list-entry">
+                        <img class="card-image animate__animated animate__fadeInLeft" src=<%= images[i] %>>
+                        <span class="bold"><%= deck.cards[i].name %></span>
+                        <span>x<%= deck.cards[i].amount %></span>
+                    </li>
+                <% } %>
+        
+            </ul>
+        </div>
+    </div>
 
     <script src="/js/deck.js"></script>
 </body>

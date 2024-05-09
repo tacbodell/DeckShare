@@ -1,15 +1,16 @@
 body {
     background: rgb(48, 48, 48);
     color: white;
+    box-sizing: border-box;
 }
 h1 {
     font-weight: bold;
-    margin: 1rem;
+    padding: 1rem;
     font-size: 3rem;
 }
 h2 {
     font-weight: bold;
-    margin: .7rem;
+    padding: .7rem;
     font-size: 1.75rem;
 }
 .bold {
@@ -23,15 +24,49 @@ h2 {
 .column {
     flex-flow: column nowrap;
 }
+
+/* nav */
+.nav-container {
+    background: rgb(85, 85, 85);
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    gap: 2rem;
+    justify-content: center;
+}
+.nav-item {
+    font-size: 2rem;
+}
+.nav-item:hover {
+    color: #03b5d2;
+}
+.nav-item-big:hover {
+    color: #03b5d2;
+}
+
+.user-area {
+    background: rgb(85, 85, 85);
+    max-width: 80rem;
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+}
+.all-decks-header {
+    padding-top: 1rem;
+}
 .image-area {
     display: flex;
     flex-flow: row wrap;
     align-items: center;
     justify-content: center;
-    gap: 6rem;
+    gap: 4rem;
+    padding: 3rem;
+    padding-top: 1rem;
 }
 .deck-image {
     width: 10rem;
+    margin-bottom: .6rem;
+    border-radius: 10px;
 }
 .deck-list-entry {
     flex-flow: column nowrap;

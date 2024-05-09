@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/css/reset.css">
-    <link rel="stylesheet" href="/css/index.css">
+    <link rel="stylesheet" href="/css/newdeck.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
     <title>DeckShare</title>
 </head>
@@ -27,20 +27,14 @@
 
     <div class="center column">
         <div class="user-area">
-            <h2 class="all-decks-header">ALL DECKS:</h2>
-            <ul class="image-area">
-
-                <% for (let i = 0; i < allDecks.length; i++) { %>
-                <a href="/viewdeck/<%= allDecks[i]._id.toString() %>">
-                    <li class="center deck-list-entry">
-                        <img class="deck-image" src=<%= allDecksImages[i] %>>
-                        <span class="bold"><%= allDecks[i].deckName %></span>
-                        <span><%= allDecks[i].deckAuthor %></span>
-                    </li>
-                </a>
-                <% } %>
-
-            </ul>
+            <h2 class="user-area-header">Submit a new deck here!</h2>
+            <p>For info on how to get your card string, please check the FAQ <a href="/faq" class="p-link">here.</a></p>
+            <form action="/deck" method="POST" class="submit-area">
+                <input type="text" placeholder="deck author" name="deckAuthor" class="form-input">
+                <input type="text" placeholder="deck name" name="deckName" class="form-input">
+                <textarea type="text" placeholder="archidekt card string" name="cardString" class="form-input-big"></textarea>
+                <button type="submit">Submit</button>
+            </form>
         </div>
     </div>
     

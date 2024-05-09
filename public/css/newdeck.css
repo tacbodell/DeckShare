@@ -5,13 +5,16 @@ body {
 }
 h1 {
     font-weight: bold;
-    margin: 1rem;
+    padding: 1rem;
     font-size: 3rem;
 }
 h2 {
     font-weight: bold;
-    margin: .7rem;
+    padding: .7rem;
     font-size: 1.75rem;
+}
+p {
+    font-size: 1.3rem;
 }
 .bold {
     font-weight: bold;
@@ -24,7 +27,6 @@ h2 {
 .column {
     flex-flow: column nowrap;
 }
-
 /* nav */
 .nav-container {
     background: rgb(85, 85, 85);
@@ -44,28 +46,34 @@ h2 {
     color: #03b5d2;
 }
 
-/*user area*/
+/*form area*/
 .user-area {
     background: rgb(85, 85, 85);
     max-width: 80rem;
     display: flex;
     flex-flow: column nowrap;
     align-items: center;
-}
-.image-area {
-    display: flex;
-    flex-flow: row wrap;
-    align-items: center;
-    justify-content: center;
-    gap: 3rem;
     padding-bottom: 2rem;
-    padding-top: 2rem;
+    gap: 2rem;
 }
-.card-image {
-    width: 15rem;
-    margin-bottom: 1rem;
-    border-radius: 10px;
+.user-area-header {
+    width: 80rem;
+    text-align: center;
 }
-.deck-list-entry {
+.p-link {
+    color: #03b5d2;
+    text-decoration: underline;
+}
+.submit-area {
+    display: flex;
     flex-flow: column nowrap;
+    align-items: center;
+    gap: 2rem;
+}
+.form-input {
+    width: 20rem;
+}
+.form-input-big {
+    width: 20rem;
+    height: 10rem;
 }

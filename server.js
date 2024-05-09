@@ -61,7 +61,19 @@ app.get('/', async (req,res) => {
     res.render('index.ejs', { allDecks: allDecks, allDecksImages: allDecksImages })
 })
 
-// load page for a deck. deck parameter should be the name of the 
+// load page to submit a deck
+app.get('/newdeck', async (req,res) => {
+    // render html document
+    res.render('newdeck.ejs')
+})
+
+// load page to view faq
+app.get('/faq', async (req,res) => {
+    // render html document
+    res.render('faq.ejs')
+})
+
+// load page to view a deck. deck parameter should be the name of the 
 app.get('/viewdeck/:deckid', async (req,res) => {
     const parameter = req.params.deckid;
     let deckToView, cardImages = [];
@@ -130,9 +142,9 @@ function parseCardStringToArrayOfObjects(str){
         const setCode = cardString.slice(0, parEndIndex);
 
         // remove set code from card area
-        cardString = cardString.split(' ');
+        cardString = cardString.split('\n');
         cardString.shift();
-        cardString = cardString.join(' ');
+        cardString = cardString.join('\n');
 
         // push new card object to array
         arr.push({
