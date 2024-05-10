@@ -73,6 +73,13 @@ app.get('/faq', async (req,res) => {
     res.render('faq.ejs')
 })
 
+// load page to view faq
+app.get('/editdeck/:deckid', async (req,res) => {
+    const parameter = req.params.deckid;
+    // render html document
+    res.render('updatedeck.ejs', {deckId: parameter})
+})
+
 // load page to view a deck. deck parameter should be the name of the 
 app.get('/viewdeck/:deckid', async (req,res) => {
     const parameter = req.params.deckid;
@@ -113,6 +120,41 @@ app.post('/deck', (req,res) => {
             .catch(err => console.error(err));
     }
 });
+
+//handle deck updates
+app.put('/deck', (req, res) => {
+    const cardString = req.body.cardString
+    const deck = parseCardStringToArrayOfObjects(cardString)
+    const id = req.body.id
+    console.log(cardString)
+    decksCollection
+        .findOneAndUpdate(
+            { _id: new ObjectId(id) },
+            {
+                $set: {
+                    cards: deck
+                },
+            },
+            {
+                upsert: false,
+            }
+        )
+        .then(result => res.json('Success'))
+        .catch(error => console.error(error));
+});
+
+//delete request to delete one deck
+app.delete('/deck', (req, res) => {
+    decksCollection
+        .deleteOne({ "_id": new ObjectId(req.body.id) })
+        .then(result => {
+            if (result.deletedCount === 0) {
+                return res.json('No object to delete found');
+            }
+            res.json(`Deck with id ${req.body.id} deleted.`);
+        })
+        .catch(error => console.error(error));
+})
 
     // accepts a cardstring from archidekt, and returns an array of card objects, in the format used in decks databases
 function parseCardStringToArrayOfObjects(str){

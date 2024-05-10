@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/reset.css">
+    <link rel="stylesheet" href="/css/updatedeck.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <title>DeckShare</title>
+</head>
+<body>
+    <nav class="nav-container">
+        <h1 class="center nav-item-big"><a href="/">MTG DeckShare</a></h1>
+
+        <li class="nav-item">
+            <a href="/newdeck">New Deck</a>
+        </li>
+        <li class="nav-item">
+            <a href="/faq">FAQ</a>
+        </li>
+        <li class="nav-item">
+            <a href="https://brysoncoons.com/">Other Works</a>
+        </li>
+    </nav>
+
+    <div class="center column">
+        <div class="user-area" data-id="<%= deckId %>">
+            <h2 class="user-area-header">Deck Updater</h2>
+            <p>You may update this deck by providing a new full card string.</p>
+            <p>For info on how to get your card string, please check the FAQ <a href="/faq" class="p-link">here.</a></p>
+            <input type="text" value="<%= deckId %>" class="form-input hidden" id="deckIdForm">
+            <textarea type="text" placeholder="archidekt card string" class="form-input-big" id="cardStringForm"></textarea>
+            <button type="submit" id="submitButton">Submit</button>
+        </div>
+    </div>
+    
+    <script src="/js/updatedeck.js"></script>
+</body>
+</html>

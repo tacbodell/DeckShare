@@ -26,7 +26,16 @@
 
     <div class="center column">
         <div class="user-area">
-            <h1 class="center"><%= deck.deckName %></h1>
+            <div class="info-area">
+                <div class="info-section">
+                    <li class="info-item-big" data-id="<%= deck._id %>" id="deckName"><%= deck.deckName %></li></a>
+                    <li class="info-item-big">Author: <%= deck.deckAuthor %></li></a>
+                </div>
+                <div class="info-section">
+                    <a href="/editdeck/<%=deck._id%>"><li class="info-item function-link" id="editButton">Edit Deck</li></a>
+                    <li class="info-item function-link" id="deleteButton">Delete Deck</li>
+                </div>
+            </div>
 
             <h2 class="center">ALL CARDS:</h2>
 

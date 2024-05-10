@@ -5,13 +5,19 @@ body {
 }
 h1 {
     font-weight: bold;
-    margin: 1rem;
+    padding: 1rem;
     font-size: 3rem;
 }
 h2 {
     font-weight: bold;
-    margin: .7rem;
+    padding: .7rem;
     font-size: 1.75rem;
+}
+p {
+    font-size: 1.3rem;
+}
+.hidden {
+    display: none;
 }
 .bold {
     font-weight: bold;
@@ -24,7 +30,6 @@ h2 {
 .column {
     flex-flow: column nowrap;
 }
-
 /* nav */
 .nav-container {
     background: rgb(85, 85, 85);
@@ -44,56 +49,34 @@ h2 {
     color: #03b5d2;
 }
 
-/*user area*/
+/*form area*/
 .user-area {
     background: rgb(85, 85, 85);
     max-width: 80rem;
     display: flex;
     flex-flow: column nowrap;
     align-items: center;
+    padding-bottom: 2rem;
+    gap: 2rem;
 }
-.info-area {
-    padding-top: 2rem;
-    padding-bottom: 1rem;
-    display: flex;
-    flex-flow: row nowrap;
-    align-items: center;
-    justify-content: space-between;
-    width: 80%;
+.user-area-header {
+    width: 80rem;
+    text-align: center;
 }
-.info-section {
+.p-link {
+    color: #03b5d2;
+    text-decoration: underline;
+}
+.submit-area {
     display: flex;
-    flex-flow: row nowrap;
+    flex-flow: column nowrap;
     align-items: center;
     gap: 2rem;
 }
-.info-item {
-    font-size: 1.2rem;
-    font-weight: bold;
+.form-input {
+    width: 20rem;
 }
-.info-item-big {
-    font-size: 1.6rem;
-    font-weight: bold;
+.form-input-big {
+    width: 20rem;
+    height: 10rem;
 }
-.function-link:hover {
-    cursor: pointer;
-    color: #03b5d2;
-}
-.image-area {
-    display: flex;
-    flex-flow: row wrap;
-    align-items: center;
-    justify-content: center;
-    gap: 3rem;
-    padding-bottom: 2rem;
-    padding-top: 2rem;
-}
-.card-image {
-    width: 15rem;
-    margin-bottom: 1rem;
-    border-radius: 10px;
-}
-.deck-list-entry {
-    flex-flow: column nowrap;
-}
-
