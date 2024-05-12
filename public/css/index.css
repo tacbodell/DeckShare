@@ -36,6 +36,10 @@ h2 {
 }
 .nav-item {
     font-size: 2rem;
+    text-align: center;
+}
+.nav-item-big {
+    text-align: center;
 }
 .nav-item:hover {
     color: #03b5d2;
@@ -71,3 +75,5 @@ h2 {
 .deck-list-entry {
     flex-flow: column nowrap;
 }
+
+
