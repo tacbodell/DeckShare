@@ -102,11 +102,23 @@ app.get('/viewdeck/:deckid', async (req,res) => {
 
 // post request to add new deck
 app.post('/deck', (req,res) => {
-    if (req.body.deckAuthor == '' || req.body.cardString == '' || req.body.deckName == ''){
+    if (req.body.deckAuthor == '' || req.body.cardString == '' || req.body.deckName == '' || req.body.cardStringType == 'null'){
         console.log('All fields must be filled correctly.');
         res.json('Error: All fields must be filled correctly.');
     } else {
-        const deck = parseCardStringToArrayOfObjects(req.body.cardString);
+        let deck;
+        // parse given card string to a deck array
+        switch (req.body.cardStringType){
+            case 'archidekt':
+                deck = parseCardStringToArrayOfObjectsArchidekt(req.body.cardString);
+                break;
+            case 'moxfield':
+                deck = parseCardStringToArrayOfObjectsMoxfield(req.body.cardString);
+                break;
+            case 'manabox':
+                deck = parseCardStringToArrayOfObjectsMoxfield(req.body.cardString);
+                break;
+        }
         decksCollection
             .insertOne({
                 'deckAuthor': req.body.deckAuthor,
@@ -124,7 +136,7 @@ app.post('/deck', (req,res) => {
 //handle deck updates
 app.put('/deck', (req, res) => {
     const cardString = req.body.cardString
-    const deck = parseCardStringToArrayOfObjects(cardString)
+    const deck = parseCardStringToArrayOfObjectsArchidekt(cardString)
     const id = req.body.id
     console.log(cardString)
     decksCollection
@@ -157,13 +169,55 @@ app.delete('/deck', (req, res) => {
 })
 
     // accepts a cardstring from archidekt, and returns an array of card objects, in the format used in decks databases
-function parseCardStringToArrayOfObjects(str){
+function parseCardStringToArrayOfObjectsArchidekt(str){
     let cardString = str;
     let arr = []
     while(cardString){
         // parse for amount
         const xIndex = cardString.indexOf('x');
         const cardAmount = Number(cardString.slice(0, xIndex));
+
+        // remove amount from card area
+        cardString = cardString.split(' ');
+        cardString.shift();
+        cardString = cardString.join(' ');
+
+        // parse for name
+        const parStartIndex = cardString.indexOf('(');
+        const cardName = cardString.slice(0, parStartIndex - 1);
+
+        // remove name from card area
+        cardString = cardString.split('(');
+        cardString.shift();
+        cardString = cardString.join('(');
+
+        // parse for set code
+        const parEndIndex = cardString.indexOf(')');
+        const setCode = cardString.slice(0, parEndIndex);
+
+        // remove set code from card area
+        cardString = cardString.split('\n');
+        cardString.shift();
+        cardString = cardString.join('\n');
+
+        // push new card object to array
+        arr.push({
+            'name': cardName,
+            'amount': cardAmount,
+            'setCode': setCode,
+        })
+    }
+    return arr;
+}
+
+// accepts a cardstring from moxfield, and returns an array of card objects, in the format used in decks databases
+function parseCardStringToArrayOfObjectsMoxfield(str){
+    let cardString = str;
+    let arr = []
+    while(cardString){
+        // parse for amount
+        const spaceIndex = cardString.indexOf(' ');
+        const cardAmount = Number(cardString.slice(0, spaceIndex));
 
         // remove amount from card area
         cardString = cardString.split(' ');

@@ -23,8 +23,6 @@
         </li>
     </nav>
 
-
-
     <div class="center column">
         <div class="user-area">
             <h2 class="user-area-header">Submit a new deck here!</h2>
@@ -32,7 +30,13 @@
             <form action="/deck" method="POST" class="submit-area">
                 <input type="text" placeholder="deck author" name="deckAuthor" class="form-input">
                 <input type="text" placeholder="deck name" name="deckName" class="form-input">
-                <textarea type="text" placeholder="archidekt card string" name="cardString" class="form-input-big"></textarea>
+                <select name="cardStringType" class="form-input">
+                    <option value="null">choose your deckbuilder...</option>
+                    <option value="archidekt">Archidekt</option>
+                    <option value="moxfield">Moxfield</option>
+                    <option value="manabox">Manabox</option>
+                </select>
+                <textarea type="text" placeholder="card string" name="cardString" class="form-input-big"></textarea>
                 <button type="submit">Submit</button>
             </form>
         </div>
