@@ -10,7 +10,10 @@
   </p>
 </div>
 
-![ezgif com-video-to-gif-converter](https://github.com/tacbodell/DeckShare/assets/98131408/68741517-d1eb-4144-98bf-8abbcc09d114)
+
+<p align="center">
+  <img src="demo.gif" alt="animated" />
+</p>
 
 <!-- TABLE OF CONTENTS -->
 <details>
@@ -57,6 +60,7 @@ Project Link: [https://github.com/tacbodell/DeckShare/](https://github.com/tacbo
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
+[demo.gif]: https://github.com/tacbodell/DeckShare/assets/98131408/68741517-d1eb-4144-98bf-8abbcc09d114
 [contributors-shield]: https://img.shields.io/github/contributors/tacbodell/DocRevu.svg?style=for-the-badge
 [contributors-url]: https://github.com/tacbodell/DocRevu/graphs/contributors
 [forks-shield]: https://img.shields.io/github/forks/tacbodell/DocRevu.svg?style=for-the-badge
