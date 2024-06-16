@@ -1,5 +1,6 @@
 <a name="readme-top"></a>
 
+
 <h3 align="center">MTG DeckShare</h3>
 
   <p align="center">
@@ -9,7 +10,7 @@
   </p>
 </div>
 
-
+![ezgif com-video-to-gif-converter](https://github.com/tacbodell/DeckShare/assets/98131408/68741517-d1eb-4144-98bf-8abbcc09d114)
 
 <!-- TABLE OF CONTENTS -->
 <details>
@@ -41,7 +42,7 @@
 * [![Node][Node.js]][Node-url]
 * [![MongoDB][mongodb.com]][MongoDB-url]
 
-See the [open issues](https://github.com/tacbodell/bankit/issues) for a full list of proposed features (and known issues).
+See the [open issues](https://github.com/tacbodell/DeckShare/issues) for a full list of proposed features (and known issues).
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -50,7 +51,7 @@ See the [open issues](https://github.com/tacbodell/bankit/issues) for a full lis
 
 Get in touch! - [@brysonc00ns](https://twitter.com/brysonc00ns) - coonsbrysona@gmail.com
 
-Project Link: [https://github.com/tacbodell/bankit](https://github.com/tacbodell/bankit)
+Project Link: [https://github.com/tacbodell/DeckShare/](https://github.com/tacbodell/DeckShare/)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
