@@ -10,10 +10,10 @@
   </p>
 </div>
 
-
-<p align="center">
-  <img src="demo.gif" alt="animated" />
-</p>
+|                                                                 |
+|:-----------------------------------------------------------------:|
+|![ezgif com-video-to-gif-converter](https://github.com/tacbodell/DeckShare/assets/98131408/4f7ffeb9-213f-4919-b13c-378c7f19b001) |
+|                                                                 |
 
 <!-- TABLE OF CONTENTS -->
 <details>
