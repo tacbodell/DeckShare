@@ -10,7 +10,7 @@
   </p>
 </div>
 
-<div align="center">![ezgif com-video-to-gif-converter](https://github.com/tacbodell/DeckShare/assets/98131408/68741517-d1eb-4144-98bf-8abbcc09d114)</div>
+!<div align="center">[ezgif com-video-to-gif-converter](https://github.com/tacbodell/DeckShare/assets/98131408/68741517-d1eb-4144-98bf-8abbcc09d114)</div>
 
 <!-- TABLE OF CONTENTS -->
 <details>
